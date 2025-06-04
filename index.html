@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SteelCity WebWorks - Pittsburgh Web Design, SEO & Lead Automation</title>
+    <meta name="description" content="Professional websites, SEO optimization, and lead automation for Pittsburgh businesses. Build your digital foundation with SteelCity WebWorks.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #2d3748;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FFD700;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .skyline {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(to top, #000 0%, transparent 100%);
+        }
+        
+        .building {
+            position: absolute;
+            bottom: 0;
+            background: linear-gradient(to top, #333, #555);
+            border-top: 2px solid #FFD700;
+        }
+        
+        .building:nth-child(1) { left: 10%; width: 60px; height: 180px; }
+        .building:nth-child(2) { left: 20%; width: 80px; height: 220px; }
+        .building:nth-child(3) { left: 35%; width: 100px; height: 250px; }
+        .building:nth-child(4) { left: 50%; width: 70px; height: 200px; }
+        .building:nth-child(5) { left: 65%; width: 90px; height: 190px; }
+        .building:nth-child(6) { left: 80%; width: 60px; height: 160px; }
+        
+        .tech-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 215, 0, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 215, 0, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #FFD700;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: -0.02em;
+        }
+        
+        .hero .tagline {
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+            font-weight: 400;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000;
+            padding: 20px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.4);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 120px 0;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a202c;
+            letter-spacing: -0.02em;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #718096;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            filter: grayscale(1);
+            transition: filter 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            filter: grayscale(0);
+        }
+        
+        .service-card h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a202c;
+            letter-spacing: -0.01em;
+        }
+        
+        .service-card p {
+            color: #4a5568;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        /* Who We Help Section */
+        .who-we-help {
+            padding: 120px 0;
+            background: white;
+        }
+        
+        .business-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .business-card {
+            text-align: center;
+            padding: 40px 25px;
+            border-radius: 20px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .business-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .business-card:hover::before {
+            left: 100%;
+        }
+        
+        .business-card:hover {
+            border-color: #FFD700;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.15);
+        }
+        
+        .business-card .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .business-card:hover .icon {
+            transform: scale(1.1);
+        }
+        
+        .business-card h4 {
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 10px;
+        }
+        
+        .specialty-text {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid #FFD700;
+        }
+        
+        /* Survey Section */
+        .survey-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .survey-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .survey-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .survey-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .survey-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .survey-button:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .about p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: #555;
+        }
+        
+        .credentials {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .credential {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .credential .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FFD700;
+        }
+        
+        .credential .text {
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        /* Lead Magnet Section */
+        .lead-magnet {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+        }
+        
+        .lead-magnet-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .lead-magnet-text h3 {
+            color: #FFD700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .lead-magnet-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .lead-magnet-text p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .benefit-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+        
+        .benefit-list li {
+            padding: 8px 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .lead-magnet-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .lead-magnet-form h4 {
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .lead-magnet-form input,
+        .lead-magnet-form select {
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        
+        .lead-magnet-form input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .claim-button {
+            width: 100%;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 18px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+        
+        .claim-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+        }
+        
+        .trust-text {
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin: 0;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .faq-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-3px);
+        }
+        
+        .faq-item h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .faq-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: #1a1a1a;
+            color: white;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .contact-info h2 {
+            color: #FFD700;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .contact-details {
+            margin-top: 30px;
+        }
+        
+        .contact-details div {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-form {
+            background: #2a2a2a;
+            padding: 40px;
+            border-radius: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #FFD700;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #3a3a3a;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        footer p {
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .lead-magnet-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .credentials {
+                gap: 20px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Loading animation for form submission */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">SteelCity WebWorks</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#who-we-help">Who We Help</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="skyline">
+            <div class="building"></div>
+            <div class="building"></div>
+            <div class="building"></div>
+            <div class="building"></div>
+            <div class="building"></div>
+            <div class="building"></div>
+        </div>
+        <div class="tech-grid"></div>
+        <div class="hero-content">
+            <h1>SteelCity WebWorks</h1>
+            <p class="tagline">Build Your Digital Foundation - Websites, SEO & Automation for Growing Businesses</p>
+            <a href="#contact" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Everything you need to build a strong digital foundation and grow your business online</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Website Design</h3>
+                    <p>Mobile-first websites that convert visitors into leads. Professional, fast-loading sites that represent your business perfectly and drive real results.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>SEO Optimization</h3>
+                    <p>Get found on Google with local SEO strategies. Rank higher in search results and attract more customers actively looking for your services.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Lead Automation</h3>
+                    <p>Turn clicks into customers with smart forms, email sequences, and chat flows. Automate your lead generation while you focus on your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Help Section -->
+    <section id="who-we-help" class="who-we-help">
+        <div class="container">
+            <h2 class="section-title">Who We Help</h2>
+            <p class="section-subtitle">From local Pittsburgh businesses to national brands, we work with companies ready to grow</p>
+            <div class="business-types">
+                <div class="business-card">
+                    <div class="icon">✂️</div>
+                    <h4>Barbershops & Salons</h4>
+                </div>
+                <div class="business-card">
+                    <div class="icon">🔧</div>
+                    <h4>Auto Repair Shops</h4>
+                </div>
+                <div class="business-card">
+                    <div class="icon">🏠</div>
+                    <h4>Home Service Pros</h4>
+                    <p><small>HVAC, Cleaning, Painting</small></p>
+                </div>
+                <div class="business-card">
+                    <div class="icon">💪</div>
+                    <h4>Personal Trainers</h4>
+                </div>
+                <div class="business-card">
+                    <div class="icon">🐕</div>
+                    <h4>Pet Groomers</h4>
+                </div>
+            </div>
+            <div class="specialty-text">
+                "We work with all types of businesses who want to grow their online presence. While we specialize in helping local Pittsburgh businesses with established reputations, we're here to help any business that's ready to take their digital presence to the next level."
+            </div>
+        </div>
+    </section>
+
+    <!-- Survey Section -->
+    <section class="survey-section">
+        <div class="container">
+            <div class="survey-content">
+                <h2>Not Sure What You Need?</h2>
+                <p>Take our quick assessment to discover which digital solutions will have the biggest impact on your business growth.</p>
+                <a href="#" class="survey-button" onclick="openSurvey()">Take the Free Assessment</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2>About SteelCity WebWorks</h2>
+                <p>I'm a Pittsburgh tech professional with over 15 years of experience in the field, currently pursuing studies in Business Administration and Cybersecurity. My passion lies in helping local businesses build their digital foundation and grow organically online.</p>
+                
+                <p>Having worked in technology for over a decade, I understand both the technical side of web development and the business challenges that small and medium-sized businesses face. This unique perspective allows me to create digital solutions that not only look great but actually drive measurable results for your business.</p>
+                
+                <p>Based right here in Pittsburgh, I'm committed to helping our local business community thrive in the digital age through strategic web design, search engine optimization, and smart automation solutions.</p>
+                
+                <div class="credentials">
+                    <div class="credential">
+                        <div class="number">15+</div>
+                        <div class="text">Years in Tech</div>
+                    </div>
+                    <div class="credential">
+                        <div class="number">100%</div>
+                        <div class="text">Pittsburgh Local</div>
+                    </div>
+                    <div class="credential">
+                        <div class="number">24/7</div>
+                        <div class="text">Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Magnet Section -->
+    <section class="lead-magnet">
+        <div class="container">
+            <div class="lead-magnet-content">
+                <div class="lead-magnet-text">
+                    <h3>🎁 Limited Time Offer</h3>
+                    <h2>Free 3-Page Website Mockup or Local SEO Audit</h2>
+                    <p><strong>$150 Value - Completely Free</strong></p>
+                    <p>See exactly how your business could look online with a professional website mockup, or discover what's holding back your current site with a comprehensive SEO audit.</p>
+                    <ul class="benefit-list">
+                        <li>✅ Professional design mockup tailored to your business</li>
+                        <li>✅ OR detailed SEO audit with actionable recommendations</li>
+                        <li>✅ 30-minute strategy call included</li>
+                        <li>✅ No obligations - keep it even if we don't work together</li>
+                    </ul>
+                </div>
+                <div class="lead-magnet-form">
+                    <h4>Claim Your Free Mockup or Audit</h4>
+                    <form id="leadMagnetForm" onsubmit="handleLeadMagnetSubmit(event)">
+                        <div class="form-row">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Email Address" required>
+                        </div>
+                        <input type="text" placeholder="Business Name" required>
+                        <input type="url" placeholder="Current Website (if you have one)">
+                        <select required>
+                            <option value="">I'm most interested in...</option>
+                            <option value="mockup">Free Website Mockup</option>
+                            <option value="audit">Free SEO Audit</option>
+                            <option value="both">Both (I'll choose later)</option>
+                        </select>
+                        <button type="submit" class="claim-button">Claim My Free $150 Value →</button>
+                    </form>
+                    <p class="trust-text">🔒 Your information is secure. No spam, ever.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-
