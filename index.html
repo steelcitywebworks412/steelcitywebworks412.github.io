@@ -336,7 +336,7 @@
         }
         
         .survey-content {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
         }
         
@@ -362,11 +362,131 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            margin-bottom: 40px;
         }
         
         .survey-button:hover {
             background: white;
             color: #667eea;
+        }
+        
+        /* Survey Form Styles */
+        .survey-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            display: none;
+        }
+        
+        .survey-form.active {
+            display: block;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+        }
+        
+        .question h4 {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        
+        .option:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .option input {
+            margin: 0;
+        }
+        
+        .option label {
+            margin: 0;
+            cursor: pointer;
+            flex: 1;
+        }
+        
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        select option {
+            background: #2d3748;
+            color: white;
+        }
+        
+        .survey-email-form {
+            display: none;
+            margin-top: 20px;
+        }
+        
+        .survey-email-form.show {
+            display: block;
+        }
+        
+        .survey-email-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .survey-email-form input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .survey-submit {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .survey-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
         }
         
         /* About Section */
@@ -504,6 +624,11 @@
             color: rgba(255, 255, 255, 0.7);
         }
         
+        .lead-magnet-form select option {
+            background: #2d3748;
+            color: white;
+        }
+        
         .claim-button {
             width: 100%;
             background: linear-gradient(135deg, #FFD700, #FFA500);
@@ -636,6 +761,16 @@
             resize: vertical;
         }
         
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #999;
+        }
+        
+        .form-group select option {
+            background: #3a3a3a;
+            color: white;
+        }
+        
         .submit-button {
             background: linear-gradient(135deg, #FFD700, #FFA500);
             color: #000;
@@ -666,6 +801,21 @@
             opacity: 0.8;
         }
         
+        /* Success Message */
+        .success-message {
+            background: #28a745;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
@@ -676,15 +826,10 @@
                 font-size: 1.1rem;
             }
             
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
+            .contact-content,
             .lead-magnet-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
-                text-align: center;
             }
             
             .form-row {
@@ -701,6 +846,10 @@
             
             .section-title {
                 font-size: 2rem;
+            }
+            
+            .survey-form {
+                padding: 20px;
             }
         }
         
@@ -745,7 +894,7 @@
         <div class="hero-content">
             <h1>SteelCity WebWorks</h1>
             <p class="tagline">Build Your Digital Foundation - Websites, SEO & Automation for Growing Businesses</p>
-            <a href="#contact" class="cta-button">Get Started Today</a>
+            <a href="#lead-magnet" class="cta-button">Get Your Free $150 Audit →</a>
         </div>
     </section>
 
@@ -815,6 +964,105 @@
                 <h2>Not Sure What You Need?</h2>
                 <p>Take our quick assessment to discover which digital solutions will have the biggest impact on your business growth.</p>
                 <a href="#" class="survey-button" onclick="openSurvey()">Take the Free Assessment</a>
+                
+                <!-- Survey Form -->
+                <form id="surveyForm" class="survey-form">
+                    <!-- Question 1 -->
+                    <div class="question">
+                        <h4>What's most important for your website right now? (Check all that apply)</h4>
+                        <div class="checkbox-group">
+                            <div class="option">
+                                <input type="checkbox" id="q1_booking" name="q1" value="Online Booking">
+                                <label for="q1_booking">Online Booking</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" id="q1_visibility" name="q1" value="Google Visibility">
+                                <label for="q1_visibility">Google Visibility</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" id="q1_mobile" name="q1" value="Mobile Friendly">
+                                <label for="q1_mobile">Mobile Friendly</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" id="q1_leads" name="q1" value="Lead Forms & Automation">
+                                <label for="q1_leads">Lead Forms & Automation</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" id="q1_reviews" name="q1" value="Customer Reviews Integration">
+                                <label for="q1_reviews">Customer Reviews Integration</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" id="q1_guidance" name="q1" value="I'm not sure – need guidance">
+                                <label for="q1_guidance">I'm not sure – need guidance</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="question">
+                        <h4>Do you currently have a website?</h4>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" id="q2_no" name="q2" value="No website yet">
+                                <label for="q2_no">No website yet</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="q2_outdated" name="q2" value="Yes, but it's outdated">
+                                <label for="q2_outdated">Yes, but it's outdated</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="q2_noleads" name="q2" value="Yes, but not bringing in leads">
+                                <label for="q2_noleads">Yes, but not bringing in leads</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="q2_works" name="q2" value="Yes, and it works great">
+                                <label for="q2_works">Yes, and it works great</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="question">
+                        <h4>What's your biggest online challenge?</h4>
+                        <select name="q3" required>
+                            <option value="">Select your biggest challenge...</option>
+                            <option value="Not enough people visiting my site">Not enough people visiting my site</option>
+                            <option value="Visitors don't become customers">Visitors don't become customers</option>
+                            <option value="I'm not showing up in Google">I'm not showing up in Google</option>
+                            <option value="I can't track what's working">I can't track what's working</option>
+                            <option value="I don't have time to deal with tech">I don't have time to deal with tech</option>
+                        </select>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="question">
+                        <h4>Would you like a free mockup or local SEO audit?</h4>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" id="q4_yes" name="q4" value="Yes, show me what you'd recommend!" onchange="showEmailForm()">
+                                <label for="q4_yes">Yes, show me what you'd recommend!</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="q4_maybe" name="q4" value="Maybe, I need to understand more" onchange="hideEmailForm()">
+                                <label for="q4_maybe">Maybe, I need to understand more</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="q4_no" name="q4" value="No thanks, just browsing for now" onchange="hideEmailForm()">
+                                <label for="q4_no">No thanks, just browsing for now</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email Form (Conditional) -->
+                    <div id="surveyEmailForm" class="survey-email-form">
+                        <h4>Enter your details to receive your free demo/audit:</h4>
+                        <input type="email" name="email" placeholder="Your Email Address" required>
+                        <input type="text" name="businessName" placeholder="Business Name" required>
+                        <input type="tel" name="phone" placeholder="Phone Number (Optional)">
+                    </div>
+
+                    <button type="submit" class="survey-submit">Submit Assessment</button>
+                </form>
             </div>
         </div>
     </section>
@@ -849,7 +1097,7 @@
     </section>
 
     <!-- Lead Magnet Section -->
-    <section class="lead-magnet">
+    <section id="lead-magnet" class="lead-magnet">
         <div class="container">
             <div class="lead-magnet-content">
                 <div class="lead-magnet-text">
@@ -866,14 +1114,17 @@
                 </div>
                 <div class="lead-magnet-form">
                     <h4>Claim Your Free Mockup or Audit</h4>
+                    <div id="leadMagnetSuccess" class="success-message">
+                        <p>🎉 Success! We'll be in touch within 24 hours with your free mockup or audit!</p>
+                    </div>
                     <form id="leadMagnetForm" onsubmit="handleLeadMagnetSubmit(event)">
                         <div class="form-row">
-                            <input type="text" placeholder="Your Name" required>
-                            <input type="email" placeholder="Email Address" required>
+                            <input type="text" name="name" placeholder="Your Name" required>
+                            <input type="email" name="email" placeholder="Email Address" required>
                         </div>
-                        <input type="text" placeholder="Business Name" required>
-                        <input type="url" placeholder="Current Website (if you have one)">
-                        <select required>
+                        <input type="text" name="business" placeholder="Business Name" required>
+                        <input type="url" name="website" placeholder="Current Website (if you have one)">
+                        <select name="service" required>
                             <option value="">I'm most interested in...</option>
                             <option value="mockup">Free Website Mockup</option>
                             <option value="audit">Free SEO Audit</option>
@@ -890,4 +1141,356 @@
     <!-- FAQ Section -->
     <section class="faq">
         <div class="container">
-            <h2 class="section-
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>How long does it take to get a website?</h4>
+                    <p>Most websites are completed within 2-4 weeks, depending on complexity and content. We'll provide a clear timeline during our initial consultation.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do you work with one-person businesses?</h4>
+                    <p>Absolutely! We work with businesses of all sizes, from solo entrepreneurs to growing companies. Every business deserves a professional online presence.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What if I already have a website?</h4>
+                    <p>No problem! We can redesign your existing site, improve its SEO, or add automation features. We'll assess what you have and recommend the best path forward.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How much does it cost?</h4>
+                    <p>Pricing varies based on your specific needs. We offer packages starting from $299 for basic sites, with custom quotes for more complex projects. Let's discuss your goals and budget!</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do I own the website once it's built?</h4>
+                    <p>Yes! You own your website, domain, and all content. We provide training so you can make updates, or we can handle ongoing maintenance for you.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do you provide ongoing support?</h4>
+                    <p>Yes, we offer maintenance packages and are always available to help with updates, questions, or new features you might need as your business grows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Let's Build Something Profitable</h2>
+                    <p>Ready to transform your online presence? Let's discuss how we can help your business grow with a professional website, improved search rankings, and automated lead generation.</p>
+                    
+                    <p>Every project starts with understanding your specific business goals and challenges. We'll create a custom strategy that fits your budget and delivers real results.</p>
+                    
+                    <div class="contact-details">
+                        <div>
+                            <span>📧</span>
+                            <span>steelcitywebworks412@gmail.com</span>
+                        </div>
+                        <div>
+                            <span>📍</span>
+                            <span>Pittsburgh, PA</span>
+                        </div>
+                        <div>
+                            <span>⏰</span>
+                            <span>Typically respond within 24 hours</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <div id="contactSuccess" class="success-message">
+                        <p>🎉 Message sent successfully! We'll get back to you within 24 hours.</p>
+                    </div>
+                    <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="business">Business Name *</label>
+                            <input type="text" id="business" name="business" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Primary Interest *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service...</option>
+                                <option value="website">New Website Design</option>
+                                <option value="seo">SEO Optimization</option>
+                                <option value="automation">Lead Automation</option>
+                                <option value="all">Complete Digital Package</option>
+                                <option value="consultation">Free Consultation</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Tell us about your project goals</label>
+                            <textarea id="message" name="message" placeholder="What are your main business goals? What challenges are you facing with your current online presence?"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SteelCity WebWorks. Building Pittsburgh's Digital Future.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Google Sheets Integration URLs
+        const GOOGLE_SHEETS_URLS = {
+            contact: 'https://script.google.com/macros/s/AKfycbx0P_P34am3Op51bqCZ73p3dbr4L19m5UiPEI__fjUrK7Z9LToCG856_zEMlCjE1Fm6/exec',
+            leadMagnet: 'https://script.google.com/macros/s/AKfycby7TK2N3GbEY-xZlGHWh_j4ig-vlIL1WpBRsRthFY2rP0mAC65XoUPHfg0ii9wLs8zW/exec',
+            survey: 'https://script.google.com/macros/s/AKfycbw5XbsQ2U717S2WMZIig_mptdGTyRi25kb2_dGYgf9Civ2W1D6KCo6I7TPEyaslalE/exec'
+        };
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Survey Functions
+        function openSurvey() {
+            const surveyForm = document.getElementById('surveyForm');
+            surveyForm.classList.add('active');
+            
+            // Scroll to survey form
+            surveyForm.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        function showEmailForm() {
+            const emailForm = document.getElementById('surveyEmailForm');
+            emailForm.classList.add('show');
+        }
+
+        function hideEmailForm() {
+            const emailForm = document.getElementById('surveyEmailForm');
+            emailForm.classList.remove('show');
+        }
+
+        // Generic form submission handler
+        async function submitToGoogleSheets(formData, sheetType) {
+            try {
+                const response = await fetch(GOOGLE_SHEETS_URLS[sheetType], {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams(formData)
+                });
+                return true;
+            } catch (error) {
+                console.error('Submission error:', error);
+                return false;
+            }
+        }
+
+        // Contact form handler
+        async function handleContactSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitButton = form.querySelector('.submit-button');
+            const successMessage = document.getElementById('contactSuccess');
+            const originalText = submitButton.textContent;
+            
+            // Show loading state
+            submitButton.textContent = 'Sending...';
+            submitButton.classList.add('loading');
+            
+            // Prepare form data
+            const formData = new FormData(form);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            // Add timestamp
+            data.timestamp = new Date().toLocaleString();
+            data.type = 'Contact Form';
+            
+            // Submit to Google Sheets
+            const success = await submitToGoogleSheets(data, 'contact');
+            
+            if (success) {
+                successMessage.classList.add('show');
+                form.reset();
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 5000);
+            } else {
+                alert('There was an error sending your message. Please try again or email us directly.');
+            }
+            
+            submitButton.textContent = originalText;
+            submitButton.classList.remove('loading');
+        }
+
+        // Lead magnet form handler
+        async function handleLeadMagnetSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitButton = form.querySelector('.claim-button');
+            const successMessage = document.getElementById('leadMagnetSuccess');
+            const originalText = submitButton.textContent;
+            
+            // Show loading state
+            submitButton.textContent = 'Processing...';
+            submitButton.style.opacity = '0.7';
+            
+            // Prepare form data
+            const formData = new FormData(form);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            // Add timestamp
+            data.timestamp = new Date().toLocaleString();
+            data.type = 'Lead Magnet';
+            
+            // Submit to Google Sheets
+            const success = await submitToGoogleSheets(data, 'leadMagnet');
+            
+            if (success) {
+                successMessage.classList.add('show');
+                form.reset();
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 8000);
+            } else {
+                alert('There was an error processing your request. Please try again or contact us directly.');
+            }
+            
+            submitButton.textContent = originalText;
+            submitButton.style.opacity = '1';
+        }
+
+        // Survey form handler
+        document.getElementById('surveyForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitButton = form.querySelector('.survey-submit');
+            const originalText = submitButton.textContent;
+            
+            // Show loading state
+            submitButton.textContent = 'Submitting...';
+            submitButton.style.opacity = '0.7';
+            
+            // Collect form data
+            const formData = new FormData(form);
+            const data = {};
+            
+            // Handle checkboxes for Q1
+            const q1Checkboxes = form.querySelectorAll('input[name="q1"]:checked');
+            data.q1 = Array.from(q1Checkboxes).map(cb => cb.value).join(', ');
+            
+            // Handle other inputs
+            for (let [key, value] of formData.entries()) {
+                if (key !== 'q1') {  // Skip q1 as we handled it above
+                    data[key] = value;
+                }
+            }
+            
+            // Add timestamp and type
+            data.timestamp = new Date().toLocaleString();
+            data.type = 'Survey Assessment';
+            
+            // Submit to Google Sheets
+            const success = await submitToGoogleSheets(data, 'survey');
+            
+            if (success) {
+                alert('🎉 Assessment submitted! We\'ll analyze your responses and get back to you with personalized recommendations within 24 hours.');
+                form.reset();
+                form.classList.remove('active');
+                document.getElementById('surveyEmailForm').classList.remove('show');
+            } else {
+                alert('There was an error submitting your assessment. Please try again or contact us directly.');
+            }
+            
+            submitButton.textContent = originalText;
+            submitButton.style.opacity = '1';
+        });
+
+        // Add navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                nav.style.background = 'rgba(0, 0, 0, 0.9)';
+            }
+        });
+
+        // Add animation on scroll for service cards
+        function animateOnScroll() {
+            const cards = document.querySelectorAll('.service-card, .business-card, .faq-item');
+            
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const cardVisible = 150;
+                
+                if (cardTop < window.innerHeight - cardVisible) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Initialize animation styles
+        document.querySelectorAll('.service-card, .business-card, .faq-item').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on load
+
+        // Console message for Google Sheets setup
+        console.log(`
+        🚀 SteelCity WebWorks - Google Sheets Setup Required
+        
+        To enable form submissions to Google Sheets:
+        
+        1. Create 3 Google Sheets for: Contact, Lead Magnet, Survey
+        2. Set up Google Apps Script for each sheet
+        3. Replace the script URLs in the GOOGLE_SHEETS_URLS object
+        
+        Need help? Email: steelcitywebworks412@gmail.com
+        `);
+    </script>
+</body>
+</html>
