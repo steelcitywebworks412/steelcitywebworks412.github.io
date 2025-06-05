@@ -1088,8 +1088,8 @@
                         <div class="text">Pittsburgh Local</div>
                     </div>
                     <div class="credential">
-                        <div class="number">24/7</div>
-                        <div class="text">Support</div>
+                        <div class="number">Fast</div>
+                        <div class="text">Response Time</div>
                     </div>
                 </div>
             </div>
@@ -1397,7 +1397,7 @@
             submitButton.style.opacity = '1';
         }
 
-        // Survey form handler
+        // Survey form handler - Fixed version
         document.getElementById('surveyForm').addEventListener('submit', async function(event) {
             event.preventDefault();
             
@@ -1407,22 +1407,35 @@
             
             // Show loading state
             submitButton.textContent = 'Submitting...';
+            submitButton.disabled = true;
             submitButton.style.opacity = '0.7';
             
             // Collect form data
             const formData = new FormData(form);
             const data = {};
             
-            // Handle checkboxes for Q1
+            // Handle checkboxes for Q1 (What's most important)
             const q1Checkboxes = form.querySelectorAll('input[name="q1"]:checked');
             data.q1 = Array.from(q1Checkboxes).map(cb => cb.value).join(', ');
             
-            // Handle other inputs
-            for (let [key, value] of formData.entries()) {
-                if (key !== 'q1') {  // Skip q1 as we handled it above
-                    data[key] = value;
-                }
-            }
+            // Handle radio buttons and other inputs
+            const q2Radio = form.querySelector('input[name="q2"]:checked');
+            data.q2 = q2Radio ? q2Radio.value : '';
+            
+            const q3Select = form.querySelector('select[name="q3"]');
+            data.q3 = q3Select ? q3Select.value : '';
+            
+            const q4Radio = form.querySelector('input[name="q4"]:checked');
+            data.q4 = q4Radio ? q4Radio.value : '';
+            
+            // Handle conditional email fields
+            const emailInput = form.querySelector('input[name="email"]');
+            const businessInput = form.querySelector('input[name="businessName"]');
+            const phoneInput = form.querySelector('input[name="phone"]');
+            
+            data.email = emailInput ? emailInput.value : '';
+            data.businessName = businessInput ? businessInput.value : '';
+            data.phone = phoneInput ? phoneInput.value : '';
             
             // Add timestamp and type
             data.timestamp = new Date().toLocaleString();
@@ -1441,6 +1454,7 @@
             }
             
             submitButton.textContent = originalText;
+            submitButton.disabled = false;
             submitButton.style.opacity = '1';
         });
 
