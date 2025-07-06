@@ -11,186 +11,221 @@
     body {
       margin: 0;
       font-family: 'Outfit', sans-serif;
-      background-color: #fdfdfd;
-      color: #111;
+      background: #0d1117;
+      color: #ffffff;
     }
-
     header {
-      background-color: #0d0d0d;
-      padding: 1.5rem;
+      background-color: #0d1117;
+      padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: #fff;
+      border-bottom: 1px solid #222;
     }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
+    header h1 {
+      font-size: 1.6rem;
+      color: #00f7ff;
+      margin: 0;
     }
-
     nav a {
-      color: #fff;
+      color: #ccc;
       text-decoration: none;
-      margin-left: 1.5rem;
-      font-weight: 500;
+      margin-left: 20px;
+      font-size: 0.9rem;
     }
-
     .hero {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 3rem 2rem;
+      padding: 60px 20px;
     }
-
     .hero-text {
-      max-width: 60%;
+      max-width: 600px;
     }
-
-    .hero-text h1 {
-      font-size: 3rem;
-      font-weight: 700;
+    .hero-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ffffff;
     }
-
     .hero-text p {
-      font-size: 1.25rem;
-      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #ccc;
     }
-
-    .hero-img {
-      max-width: 30%;
+    .robot-image {
+      width: 200px;
+      height: auto;
     }
-
-    .section {
-      padding: 4rem 2rem;
+    .services, .use-cases {
+      padding: 60px 20px;
       text-align: center;
     }
-
-    .section h2 {
+    .services h3, .use-cases h3 {
       font-size: 2rem;
-      margin-bottom: 2rem;
+      color: #00f7ff;
+      margin-bottom: 40px;
     }
-
-    .services, .eighty-twenty {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
+    .service-grid, .use-case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: auto;
     }
-
     .card {
-      background: #fff;
-      border-radius: 1rem;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-      padding: 2rem;
-      width: 240px;
+      background-color: #161b22;
+      border-radius: 12px;
+      perspective: 1000px;
     }
-
-    .eighty-twenty .card {
-      background: #f5f5f5;
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
     }
-
-    .card h3 {
-      margin: 1rem 0 0.5rem;
-      font-weight: 600;
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
     }
-
-    .card p {
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .card-front {
+      background-color: #21262d;
+    }
+    .card-back {
+      background-color: #1f6feb;
+      transform: rotateY(180deg);
+    }
+    .card h4 {
+      margin-top: 0;
+      color: #ffffff;
+    }
+    .card p, .card ul {
       font-size: 0.95rem;
+      color: #ccc;
     }
-
-    footer {
-      background-color: #0d0d0d;
-      color: #fff;
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
+    .card ul {
+      padding-left: 20px;
+      text-align: left;
     }
   </style>
 </head>
 
 <body>
   <header>
-    <div class="logo">Steel City Web Works</div>
+    <h1>STEEL CITY WEB WORKS</h1>
     <nav>
-      <a href="#services">Services</a>
-      <a href="#method">80/20 Method</a>
-      <a href="#about">About</a>
+      <a href="#services">Our Services</a>
+      <a href="#use-cases">Use Cases</a>
+      <a href="#method">The 80/20 Method</a>
+      <a href="#about">About Me</a>
+      <a href="#contact">Get Started</a>
     </nav>
   </header>
 
   <section class="hero">
     <div class="hero-text">
-      <h1>AI-Powered Automation for Service Businesses</h1>
-      <p>Automate your workflows with custom, affordable AI systems</p>
+      <h2>AI-Powered Automation for Service Businesses</h2>
+      <p>Automate your workflows with custom, affordable AI systems.</p>
     </div>
-    <div class="hero-img">
-      <img src="robot.png" alt="Robot" style="width: 100%;" />
-      <p style="text-align: center; font-size: 0.85rem;">[Space reserved for logo]</p>
-    </div>
+    <img src="robot.png" alt="Robot" class="robot-image">
   </section>
 
-  <section class="section" id="services">
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="card">
-        <img src="invoice.png" alt="Invoice Icon" style="width: 50px;" />
-        <h3>Invoice Automation</h3>
-        <p>Generate invoices without the hassle</p>
+  <section class="services" id="services">
+    <h3>Our Services</h3>
+    <div class="service-grid">
+      <div class="card"><div class="card-inner">
+        <div class="card-front">
+          <h4>Invoice Automation</h4>
+          <p>Generate invoices without the hassle</p>
+        </div>
+        <div class="card-back">
+          <ul>
+            <li>Auto-generate invoices post-job</li>
+            <li>Integrated payment links</li>
+            <li>Track payment status</li>
+          </ul>
+        </div></div>
       </div>
-      <div class="card">
-        <img src="leadbot.png" alt="Lead Bot Icon" style="width: 50px;" />
-        <h3>Lead Follow-Up Bots</h3>
-        <p>Engage leads for you and boost sales</p>
+      <div class="card"><div class="card-inner">
+        <div class="card-front">
+          <h4>Lead Follow-Up Bots</h4>
+          <p>Engage leads for you and boost sales</p>
+        </div>
+        <div class="card-back">
+          <ul>
+            <li>Instant replies</li>
+            <li>CRM integration</li>
+            <li>Smart follow-ups</li>
+          </ul>
+        </div></div>
       </div>
-      <div class="card">
-        <img src="booking.png" alt="Booking Icon" style="width: 50px;" />
-        <h3>Booking Systems</h3>
-        <p>Automated scheduling for your business</p>
-      </div>
-      <div class="card">
-        <img src="customai.png" alt="Custom AI Icon" style="width: 50px;" />
-        <h3>Custom AI Development</h3>
-        <p>Tailored solutions to automate complex workflows</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="method">
-    <h2>The 80/20 Method</h2>
-    <p style="max-width: 700px; margin: 0 auto; font-size: 1.1rem;">We combine artificial intelligence with automation to eliminate manual tasks and create incredibly efficient processes. We've built 80% of the solution – you provide 20% customization for a complete system that transforms your business.</p>
-    <div class="eighty-twenty" style="margin-top: 3rem;">
-      <div class="card">
-        <h3>80% Pre-Built Framework</h3>
-        <p>Proven workflows, AI models, and integrations ready to deploy</p>
-      </div>
-      <div class="card">
-        <h3>+</h3>
-        <p style="font-size: 2rem;">➕</p>
-      </div>
-      <div class="card">
-        <h3>20% Your Customization</h3>
-        <p>Tailored to your specific business rules, data, and processes</p>
-      </div>
-      <div class="card">
-        <h3>=</h3>
-        <p style="font-size: 2rem;">✅</p>
-      </div>
-      <div class="card">
-        <h3>100% Complete Solution</h3>
-        <p>Delivering a full system to run your business better, faster, and smarter</p>
+      <div class="card"><div class="card-inner">
+        <div class="card-front">
+          <h4>Booking Systems</h4>
+          <p>Automated scheduling for your business</p>
+        </div>
+        <div class="card-back">
+          <ul>
+            <li>24/7 self-booking</li>
+            <li>Syncs to your calendar</li>
+            <li>Sends reminders</li>
+          </ul>
+        </div></div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="about">
-    <h2>About Me</h2>
-    <p style="max-width: 600px; margin: 0 auto;">I'm a local automation consultant focused on helping service businesses streamline their operations through smart, cost-effective AI solutions. With years of real-world experience and a results-first mindset, my goal is to give you back time and clarity.</p>
+  <section class="use-cases" id="use-cases">
+    <h3>Popular Use Cases</h3>
+    <p>Real automation workflows that save businesses hours every day</p>
+    <div class="use-case-grid">
+      <div class="card"><div class="card-inner">
+        <div class="card-front">
+          <h4>Client Intake + Quote Flow</h4>
+          <p>Auto-calculates quotes from form entries</p>
+        </div>
+        <div class="card-back">
+          <ul>
+            <li>Triggers from form</li>
+            <li>AI extracts project details</li>
+            <li>Sends quote instantly</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="card"><div class="card-inner">
+        <div class="card-front">
+          <h4>Missed Call → Textback</h4>
+          <p>Instantly texts leads who don’t answer</p>
+        </div>
+        <div class="card-back">
+          <ul>
+            <li>Missed call triggers text</li>
+            <li>Personalized message</li>
+            <li>Follow-up option</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="card"><div class="card-inner">
+        <div class="card-front">
+          <h4>Review Request Automation</h4>
+          <p>Sends timed Google review reminders</p>
+        </div>
+        <div class="card-back">
+          <ul>
+            <li>Project completion triggers</li>
+            <li>Sends request at best time</li>
+            <li>Follows up automatically</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
   </section>
-
-  <footer>
-    &copy; 2025 Steel City Web Works. All rights reserved.
-  </footer>
 </body>
-
 </html>
