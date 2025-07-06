@@ -5,227 +5,154 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Steel City Web Works</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw5f3B1zJq0V1qEoR5pF8B84jHh+WqR7yF3X5E5Kf9Z3l3vvjW7yA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     body {
       margin: 0;
-      font-family: 'Outfit', sans-serif;
-      background: #0d1117;
-      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #111;
     }
     header {
-      background-color: #0d1117;
-      padding: 20px;
+      background-color: #ffffff;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #222;
-    }
-    header h1 {
-      font-size: 1.6rem;
-      color: #00f7ff;
-      margin: 0;
-    }
-    nav a {
-      color: #ccc;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 0.9rem;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #eee;
     }
     .hero {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 60px 20px;
+      padding: 4rem 2rem;
     }
     .hero-text {
-      max-width: 600px;
+      max-width: 50%;
     }
-    .hero-text h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #ffffff;
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
     }
-    .hero-text p {
-      font-size: 1.2rem;
-      color: #ccc;
+    .hero p {
+      font-size: 1.25rem;
     }
-    .robot-image {
-      width: 200px;
-      height: auto;
+    .robot-img {
+      max-width: 250px;
     }
-    .services, .use-cases {
-      padding: 60px 20px;
+    section {
+      padding: 4rem 2rem;
+    }
+    h2 {
       text-align: center;
-    }
-    .services h3, .use-cases h3 {
       font-size: 2rem;
-      color: #00f7ff;
-      margin-bottom: 40px;
+      margin-bottom: 2rem;
     }
-    .service-grid, .use-case-grid {
+    .services, .workflow, .use-cases {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1100px;
-      margin: auto;
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
     }
     .card {
-      background-color: #161b22;
-      border-radius: 12px;
-      perspective: 1000px;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
     }
-    .card-inner {
-      position: relative;
-      width: 100%;
-      height: 200px;
-      transform-style: preserve-3d;
-      transition: transform 0.6s;
+    .card:hover {
+      transform: translateY(-5px);
     }
-    .card:hover .card-inner {
-      transform: rotateY(180deg);
-    }
-    .card-front, .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 12px;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-    .card-front {
-      background-color: #21262d;
-    }
-    .card-back {
-      background-color: #1f6feb;
-      transform: rotateY(180deg);
-    }
-    .card h4 {
-      margin-top: 0;
-      color: #ffffff;
-    }
-    .card p, .card ul {
-      font-size: 0.95rem;
-      color: #ccc;
-    }
-    .card ul {
-      padding-left: 20px;
-      text-align: left;
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #eee;
     }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>STEEL CITY WEB WORKS</h1>
+    <div class="logo">STEEL CITY WEB WORKS</div>
     <nav>
-      <a href="#services">Our Services</a>
-      <a href="#use-cases">Use Cases</a>
-      <a href="#method">The 80/20 Method</a>
-      <a href="#about">About Me</a>
-      <a href="#contact">Get Started</a>
+      <a href="#workflow">Workflows</a> |
+      <a href="#use-cases">Use Cases</a> |
+      <a href="#about">About</a>
     </nav>
   </header>
 
   <section class="hero">
     <div class="hero-text">
-      <h2>AI-Powered Automation for Service Businesses</h2>
-      <p>Automate your workflows with custom, affordable AI systems.</p>
+      <h1>AI-Powered Automation for Service Businesses</h1>
+      <p>Automate your workflows with custom, affordable AI systems</p>
     </div>
-    <img src="robot.png" alt="Robot" class="robot-image">
+    <div>
+      <img class="robot-img" src="robot.png" alt="Robot Placeholder" />
+      <div style="text-align:center; font-size: 0.9rem;">[Space reserved for logo]</div>
+    </div>
   </section>
 
-  <section class="services" id="services">
-    <h3>Our Services</h3>
-    <div class="service-grid">
-      <div class="card"><div class="card-inner">
-        <div class="card-front">
-          <h4>Invoice Automation</h4>
-          <p>Generate invoices without the hassle</p>
-        </div>
-        <div class="card-back">
-          <ul>
-            <li>Auto-generate invoices post-job</li>
-            <li>Integrated payment links</li>
-            <li>Track payment status</li>
-          </ul>
-        </div></div>
+  <section id="workflow">
+    <h2>Work Smarter, Not Harder</h2>
+    <p style="text-align:center; max-width: 800px; margin: 0 auto 2rem;">
+      Every business has bottlenecks. We help you eliminate yours with powerful, pre-built automation frameworks that adapt to your workflow. Here’s how we do it:
+    </p>
+    <div class="workflow">
+      <div class="card">
+        <h3>Step 1: Scope Your Flow</h3>
+        <p>We identify your biggest time-wasters — invoices, lead follow-ups, form fills, client handoffs — and what tools you already use.</p>
       </div>
-      <div class="card"><div class="card-inner">
-        <div class="card-front">
-          <h4>Lead Follow-Up Bots</h4>
-          <p>Engage leads for you and boost sales</p>
-        </div>
-        <div class="card-back">
-          <ul>
-            <li>Instant replies</li>
-            <li>CRM integration</li>
-            <li>Smart follow-ups</li>
-          </ul>
-        </div></div>
+      <div class="card">
+        <h3>Step 2: Load In the Framework</h3>
+        <p>We apply tested automations that already handle 80% of what most businesses need.</p>
       </div>
-      <div class="card"><div class="card-inner">
-        <div class="card-front">
-          <h4>Booking Systems</h4>
-          <p>Automated scheduling for your business</p>
-        </div>
-        <div class="card-back">
-          <ul>
-            <li>24/7 self-booking</li>
-            <li>Syncs to your calendar</li>
-            <li>Sends reminders</li>
-          </ul>
-        </div></div>
+      <div class="card">
+        <h3>Step 3: Train the AI, Customize Logic</h3>
+        <p>We adjust for your business—naming, sequences, workflows—and feed in your voice or brand tone where needed.</p>
+      </div>
+      <div class="card">
+        <h3>Step 4: Monitor, Score & Improve</h3>
+        <p>We don't just install it. We optimize and teach you how to use it—or run it for you. Weekly reports included.</p>
       </div>
     </div>
   </section>
 
-  <section class="use-cases" id="use-cases">
-    <h3>Popular Use Cases</h3>
-    <p>Real automation workflows that save businesses hours every day</p>
-    <div class="use-case-grid">
-      <div class="card"><div class="card-inner">
-        <div class="card-front">
-          <h4>Client Intake + Quote Flow</h4>
-          <p>Auto-calculates quotes from form entries</p>
-        </div>
-        <div class="card-back">
-          <ul>
-            <li>Triggers from form</li>
-            <li>AI extracts project details</li>
-            <li>Sends quote instantly</li>
-          </ul>
-        </div></div>
+  <section id="use-cases">
+    <h2>Popular Use Cases</h2>
+    <p style="text-align:center;">Real automation workflows that save businesses hours every day</p>
+    <div class="use-cases">
+      <div class="card">
+        <h3>Client Intake + Quote Flow</h3>
+        <p>Auto-calculates quotes from form entries</p>
       </div>
-      <div class="card"><div class="card-inner">
-        <div class="card-front">
-          <h4>Missed Call → Textback</h4>
-          <p>Instantly texts leads who don’t answer</p>
-        </div>
-        <div class="card-back">
-          <ul>
-            <li>Missed call triggers text</li>
-            <li>Personalized message</li>
-            <li>Follow-up option</li>
-          </ul>
-        </div></div>
+      <div class="card">
+        <h3>Missed Call → Textback</h3>
+        <p>Instantly texts leads who don’t answer</p>
       </div>
-      <div class="card"><div class="card-inner">
-        <div class="card-front">
-          <h4>Review Request Automation</h4>
-          <p>Sends timed Google review reminders</p>
-        </div>
-        <div class="card-back">
-          <ul>
-            <li>Project completion triggers</li>
-            <li>Sends request at best time</li>
-            <li>Follows up automatically</li>
-          </ul>
-        </div></div>
+      <div class="card">
+        <h3>Review Request Automation</h3>
+        <p>Sends timed Google review reminders</p>
+      </div>
+      <div class="card">
+        <h3>Invoice + Pay-Now Workflow</h3>
+        <p>Sends invoice + payment link after job</p>
+      </div>
+      <div class="card">
+        <h3>Lead Scoring + CRM Sync</h3>
+        <p>Scores leads by behavior and syncs with Google Sheets</p>
+      </div>
+      <div class="card">
+        <h3>Abandoned Form Rescue</h3>
+        <p>Follows up automatically if forms aren’t completed</p>
       </div>
     </div>
   </section>
+
+  <footer>
+    <p>© 2025 Steel City Web Works. All rights reserved.</p>
+  </footer>
 </body>
+
 </html>
