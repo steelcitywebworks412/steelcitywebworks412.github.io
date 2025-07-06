@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Steel City Web Works - AI Automation Solutions</title>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #0a1628;
@@ -18,6 +21,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
         }
         .logo {
             color: #40e0d0;
@@ -35,11 +43,42 @@
         }
         .hero {
             text-align: center;
-            padding: 5rem 2rem 3rem;
+            padding: 7rem 2rem 3rem;
+        }
+        .hero-slogan {
+            color: #40e0d0;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .hero h1 {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        .hero-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            text-align: left;
+        }
+        .step-card {
+            background-color: rgba(64, 224, 208, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #40e0d0;
+            border-radius: 10px;
+        }
+        .step-card h3 {
+            color: #40e0d0;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        .step-card p {
+            color: #e0e7ff;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
         .subtitle {
             color: #e0e7ff;
@@ -51,6 +90,7 @@
             justify-content: center;
             gap: 2rem;
             flex-wrap: wrap;
+            margin: 3rem 0;
         }
         .stat {
             background-color: rgba(64, 224, 208, 0.1);
@@ -68,6 +108,24 @@
             font-size: 0.9rem;
             color: #b0c4de;
         }
+        .cta-button {
+            background: linear-gradient(135deg, #40e0d0 0%, #00bfff 100%);
+            color: #0a1628;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-top: 2rem;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(64, 224, 208, 0.3);
+        }
         .section {
             padding: 4rem 2rem;
         }
@@ -76,6 +134,15 @@
             font-size: 2rem;
             color: #40e0d0;
             margin-bottom: 2rem;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #b0c4de;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .services-grid {
             display: grid;
@@ -92,11 +159,167 @@
             color: #40e0d0;
             margin-bottom: 0.5rem;
         }
+        .service-item p {
+            color: #e0e7ff;
+            line-height: 1.5;
+        }
+        
+        /* Use Cases Flip Cards */
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 220px;
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .flip-card-front {
+            background-color: rgba(64, 224, 208, 0.1);
+            border: 1px solid rgba(64, 224, 208, 0.3);
+        }
+        .flip-card-back {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            transform: rotateY(180deg);
+            border: 1px solid rgba(64, 224, 208, 0.3);
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .card-title {
+            color: #40e0d0;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: bold;
+        }
+        .card-description {
+            color: #b0c4de;
+            font-size: 0.9rem;
+        }
+        .flip-card-back h4 {
+            color: #40e0d0;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .flip-card-back ul {
+            color: #e0e7ff;
+            text-align: left;
+            list-style: none;
+            padding: 0;
+            font-size: 0.85rem;
+        }
+        .flip-card-back li {
+            margin-bottom: 0.4rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+        .flip-card-back li::before {
+            content: "✓";
+            color: #40e0d0;
+            position: absolute;
+            left: 0;
+        }
+        .savings-highlight {
+            background-color: rgba(64, 224, 208, 0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            margin-top: 0.8rem;
+            font-weight: bold;
+            color: #40e0d0;
+            font-size: 0.8rem;
+        }
+        
+        /* 80/20 Method Section */
+        .method-section {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .method-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        .method-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(64, 224, 208, 0.3);
+            min-width: 180px;
+        }
+        .method-percentage {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #40e0d0;
+            display: block;
+        }
+        .method-label {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .method-description {
+            font-size: 0.85rem;
+            color: #b0c4de;
+            margin-top: 0.5rem;
+        }
+        .plus-sign {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #40e0d0;
+        }
+        
         footer {
             text-align: center;
             padding: 2rem;
             background-color: #101d3f;
             color: #b0c4de;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            .method-visual {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .flip-card {
+                height: 200px;
+            }
         }
     </style>
 </head>
@@ -105,6 +328,7 @@
         <div class="logo">Steel City Web Works</div>
         <nav>
             <a href="#services">Our Services</a>
+            <a href="#use-cases">Use Cases</a>
             <a href="#method">The 80/20 Method</a>
             <a href="#about">About Me</a>
             <a href="#contact">Get Started</a>
@@ -112,11 +336,31 @@
     </header>
 
     <section class="hero">
+        <div class="hero-slogan">Your Tech Stack. Smarter. Faster. Automated.</div>
         <h1>Stop Doing Repetitive Work</h1>
-        <p class="subtitle">
-            We combine artificial intelligence with automation to eliminate manual tasks and create incredibly efficient processes. 
-            We've built 80% of the solution - you provide 20% customization for a complete system that transforms your business.
-        </p>
+        
+        <div class="hero-steps">
+            <div class="step-card">
+                <h3>Step 1: Scope Your Flow</h3>
+                <p>We identify your biggest time-wasters — invoices, lead follow-ups, form fills, client handoffs — and what tools you already use.</p>
+            </div>
+            
+            <div class="step-card">
+                <h3>Step 2: Load In the Framework</h3>
+                <p>We apply tested automations that already handle 80% of what most businesses need.</p>
+            </div>
+            
+            <div class="step-card">
+                <h3>Step 3: Train the AI, Customize Logic</h3>
+                <p>We adjust for your business—naming, sequences, workflows—and feed in your voice or brand tone where needed.</p>
+            </div>
+            
+            <div class="step-card">
+                <h3>Step 4: Monitor, Score & Improve</h3>
+                <p>We don't just install it. We optimize and teach you how to use it—or run it for you. Weekly reports included.</p>
+            </div>
+        </div>
+        
         <div class="hero-stats">
             <div class="stat">
                 <div class="stat-number">10X</div>
@@ -131,9 +375,203 @@
                 <div class="stat-label">Weeks to Deploy</div>
             </div>
         </div>
+        
+        <a href="#contact" class="cta-button">Automate Your Business Today</a>
     </section>
 
     <section id="services" class="section">
         <h2 class="section-title">Our Services</h2>
         <div class="services-grid">
             <div class="service-item">
+                <h3>Custom AI Development</h3>
+                <p>Tailored artificial intelligence solutions that understand your business processes and automate complex decision-making workflows.</p>
+            </div>
+            <div class="service-item">
+                <h3>System Integration</h3>
+                <p>Connect all your business tools and platforms for seamless data flow and automated handoffs between systems.</p>
+            </div>
+            <div class="service-item">
+                <h3>Lead Generation & Scoring</h3>
+                <p>Intelligent lead capture, qualification, and nurturing systems that identify your best prospects automatically.</p>
+            </div>
+            <div class="service-item">
+                <h3>AI Consulting</h3>
+                <p>Strategic guidance on implementing AI and automation solutions that deliver measurable business results.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="use-cases" class="section">
+        <h2 class="section-title">Popular Use Cases</h2>
+        <p class="section-subtitle">Real automation workflows that save businesses hours every day</p>
+        
+        <div class="use-cases-grid">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-icon">📋</div>
+                        <h3 class="card-title">Client Intake + Quote Flow</h3>
+                        <p class="card-description">Auto-calculates quotes from form entries</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>How It Works:</h4>
+                        <ul>
+                            <li>Form submission triggers workflow</li>
+                            <li>AI extracts project details</li>
+                            <li>Auto-calculates pricing tiers</li>
+                            <li>Sends professional quote instantly</li>
+                        </ul>
+                        <div class="savings-highlight">Saves 2-3 hours per quote</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-icon">📱</div>
+                        <h3 class="card-title">Missed Call → Textback</h3>
+                        <p class="card-description">Instantly texts leads who don't answer</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>How It Works:</h4>
+                        <ul>
+                            <li>Missed call detected automatically</li>
+                            <li>Sends personalized follow-up text</li>
+                            <li>Schedules callback if needed</li>
+                            <li>Logs interaction in CRM</li>
+                        </ul>
+                        <div class="savings-highlight">Never miss a lead again</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-icon">⭐</div>
+                        <h3 class="card-title">Review Request Automation</h3>
+                        <p class="card-description">Sends timed Google review reminders</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>How It Works:</h4>
+                        <ul>
+                            <li>Triggers after project completion</li>
+                            <li>Waits optimal time for reviews</li>
+                            <li>Sends personalized request</li>
+                            <li>Follows up if no response</li>
+                        </ul>
+                        <div class="savings-highlight">3X more reviews automatically</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-icon">💰</div>
+                        <h3 class="card-title">Invoice + Pay-Now Workflow</h3>
+                        <p class="card-description">Sends invoice + payment link after job</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>How It Works:</h4>
+                        <ul>
+                            <li>Job completion triggers invoice</li>
+                            <li>Auto-generates with pay-now link</li>
+                            <li>Sends payment reminders</li>
+                            <li>Updates accounting system</li>
+                        </ul>
+                        <div class="savings-highlight">Get paid 50% faster</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-icon">🎯</div>
+                        <h3 class="card-title">Lead Scoring + CRM Sync</h3>
+                        <p class="card-description">Scores leads by behavior and syncs with Google Sheets</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>How It Works:</h4>
+                        <ul>
+                            <li>Tracks website and email behavior</li>
+                            <li>AI scores lead quality 1-10</li>
+                            <li>Auto-assigns to sales team</li>
+                            <li>Updates CRM with hot prospects</li>
+                        </ul>
+                        <div class="savings-highlight">Focus on best leads only</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-icon">⚠️</div>
+                        <h3 class="card-title">Abandoned Form Rescue</h3>
+                        <p class="card-description">Follows up automatically if forms aren't completed</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>How It Works:</h4>
+                        <ul>
+                            <li>Detects partially filled forms</li>
+                            <li>Sends gentle reminder emails</li>
+                            <li>Offers help completing form</li>
+                            <li>Recovers 40% of abandoned leads</li>
+                        </ul>
+                        <div class="savings-highlight">Recover lost opportunities</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="method" class="method-section">
+        <h2 class="section-title">The 80/20 Method</h2>
+        <p class="section-subtitle">We combine artificial intelligence with automation to eliminate manual tasks and create incredibly efficient processes. We've built 80% of the solution - you provide 20% customization for a complete system that transforms your business.</p>
+        
+        <div class="method-visual">
+            <div class="method-box">
+                <span class="method-percentage">80%</span>
+                <div class="method-label">Pre-Built Framework</div>
+                <div class="method-description">Proven workflows, AI models, and integrations ready to deploy</div>
+            </div>
+            <div class="plus-sign">+</div>
+            <div class="method-box">
+                <span class="method-percentage">20%</span>
+                <div class="method-label">Your Customization</div>
+                <div class="method-description">Tailored to your specific business rules, data, and processes</div>
+            </div>
+            <div class="plus-sign">=</div>
+            <div class="method-box">
+                <span class="method-percentage">100%</span>
+                <div class="method-label">Complete Solution</div>
+                <div class="method-description">Faster deployment, lower cost, proven results</div>
+            </div>
+        </div>
+        
+        <p style="font-size: 1.1rem; margin-top: 2rem; color: #ffffff;">
+            <strong>Save 60-80% on development time and costs</strong> while getting enterprise-grade automation that actually works.
+        </p>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">I'm Josh — a builder, consultant, and automation strategist based in Pittsburgh. I help small businesses stop doing repetitive work by turning processes into intelligent systems that scale.</p>
+    </section>
+
+    <section id="contact" class="section">
+        <h2 class="section-title">Ready to Automate?</h2>
+        <p class="section-subtitle">Let's discuss how the 80/20 approach can transform your business</p>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="#" class="cta-button">Schedule Free Consultation</a>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2025 Steel City Web Works. All rights reserved.
+    </footer>
+</body>
+</html>
