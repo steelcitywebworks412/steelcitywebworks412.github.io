@@ -1,158 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Steel City Web Works</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw5f3B1zJq0V1qEoR5pF8B84jHh+WqR7yF3X5E5Kf9Z3l3vvjW7yA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
-      color: #111;
-    }
-    header {
-      background-color: #ffffff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid #eee;
-    }
-    .hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 4rem 2rem;
-    }
-    .hero-text {
-      max-width: 50%;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.25rem;
-    }
-    .robot-img {
-      max-width: 250px;
-    }
-    section {
-      padding: 4rem 2rem;
-    }
-    h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-    .services, .workflow, .use-cases {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .card {
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #eee;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
 </head>
-
 <body>
   <header>
-    <div class="logo">STEEL CITY WEB WORKS</div>
+    <h1>STEEL CITY WEB WORKS</h1>
     <nav>
-      <a href="#workflow">Workflows</a> |
-      <a href="#use-cases">Use Cases</a> |
-      <a href="#about">About</a>
+      <ul>
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#use-cases">Use Cases</a></li>
+        <li><a href="#method">The 80/20 Method</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#lead-gen">Get Started</a></li>
+      </ul>
     </nav>
   </header>
 
   <section class="hero">
-    <div class="hero-text">
-      <h1>AI-Powered Automation for Service Businesses</h1>
-      <p>Automate your workflows with custom, affordable AI systems</p>
+    <div class="text">
+      <h2>AI-Powered Automation System Solutions</h2>
+      <p>Custom automations that simplify your operations, save you time, and unlock new productivity across any industry.</p>
     </div>
-    <div>
-      <img class="robot-img" src="robot.png" alt="Robot Placeholder" />
-      <div style="text-align:center; font-size: 0.9rem;">[Space reserved for logo]</div>
+    <div class="robot-placeholder">
+      <img src="robot.png" alt="Robot" />
+      <div class="logo-space">[Space reserved for logo]</div>
     </div>
   </section>
 
-  <section id="workflow">
+  <section class="workflow" id="services">
     <h2>Work Smarter, Not Harder</h2>
-    <p style="text-align:center; max-width: 800px; margin: 0 auto 2rem;">
-      Every business has bottlenecks. We help you eliminate yours with powerful, pre-built automation frameworks that adapt to your workflow. Here’s how we do it:
-    </p>
-    <div class="workflow">
-      <div class="card">
+    <p>We combine proven automation blueprints with smart customization to free up your time and eliminate costly bottlenecks.</p>
+    <div class="steps">
+      <div class="step">
         <h3>Step 1: Scope Your Flow</h3>
         <p>We identify your biggest time-wasters — invoices, lead follow-ups, form fills, client handoffs — and what tools you already use.</p>
       </div>
-      <div class="card">
+      <div class="step">
         <h3>Step 2: Load In the Framework</h3>
         <p>We apply tested automations that already handle 80% of what most businesses need.</p>
       </div>
-      <div class="card">
+      <div class="step">
         <h3>Step 3: Train the AI, Customize Logic</h3>
         <p>We adjust for your business—naming, sequences, workflows—and feed in your voice or brand tone where needed.</p>
       </div>
-      <div class="card">
+      <div class="step">
         <h3>Step 4: Monitor, Score & Improve</h3>
         <p>We don't just install it. We optimize and teach you how to use it—or run it for you. Weekly reports included.</p>
       </div>
     </div>
   </section>
 
-  <section id="use-cases">
+  <section class="use-cases" id="use-cases">
     <h2>Popular Use Cases</h2>
-    <p style="text-align:center;">Real automation workflows that save businesses hours every day</p>
-    <div class="use-cases">
-      <div class="card">
-        <h3>Client Intake + Quote Flow</h3>
-        <p>Auto-calculates quotes from form entries</p>
+    <p>Real automation workflows that save businesses hours every day</p>
+    <!-- Use Case Cards -->
+    <!-- Add your animated flip boxes here -->
+  </section>
+
+  <section class="method" id="method">
+    <h2>The 80/20 Method</h2>
+    <p>We combine artificial intelligence with automation to eliminate manual tasks and create incredibly efficient processes. We've built 80% of the solution - you provide 20% customization for a complete system that transforms your business.</p>
+    <div class="breakdown">
+      <div class="box">
+        <h3>80%</h3>
+        <p>Pre-Built Framework<br>Proven workflows, AI models, and integrations ready to deploy</p>
       </div>
-      <div class="card">
-        <h3>Missed Call → Textback</h3>
-        <p>Instantly texts leads who don’t answer</p>
+      <div class="box">
+        <h3>+</h3>
       </div>
-      <div class="card">
-        <h3>Review Request Automation</h3>
-        <p>Sends timed Google review reminders</p>
+      <div class="box">
+        <h3>20%</h3>
+        <p>Your Customization<br>Tailored to your specific business rules, data, and processes</p>
       </div>
-      <div class="card">
-        <h3>Invoice + Pay-Now Workflow</h3>
-        <p>Sends invoice + payment link after job</p>
+      <div class="box">
+        <h3>=</h3>
       </div>
-      <div class="card">
-        <h3>Lead Scoring + CRM Sync</h3>
-        <p>Scores leads by behavior and syncs with Google Sheets</p>
-      </div>
-      <div class="card">
-        <h3>Abandoned Form Rescue</h3>
-        <p>Follows up automatically if forms aren’t completed</p>
+      <div class="box">
+        <h3>100%</h3>
+        <p>Complete Solution</p>
       </div>
     </div>
   </section>
 
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>With a background in automation, tech, and small business operations, I help entrepreneurs and service providers streamline their workflow using AI. My mission is to make powerful systems accessible, affordable, and custom-fit to your real-world tasks.</p>
+  </section>
+
+  <section class="lead-gen" id="lead-gen">
+    <h2>Get a Free Automation Audit</h2>
+    <p>Let’s uncover how much time and money automation could save you. Get a 30-day trial and see results before committing.</p>
+    <form action="https://formspree.io/f/your-id" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="text" name="business" placeholder="Business Type (Optional)" />
+      <textarea name="problem" placeholder="What’s one thing that slows you down?" required></textarea>
+      <button type="submit">Start My Free Trial</button>
+    </form>
+  </section>
+
   <footer>
-    <p>© 2025 Steel City Web Works. All rights reserved.</p>
+    <p>© 2025 Steel City Web Works</p>
   </footer>
 </body>
-
 </html>
