@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steel City WebWorks - AI-Powered Automation for Every Business</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e40af;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 12px;
+            border-radius: 8px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: #374151;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #1e40af;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #1e40af;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #1e40af;
+            line-height: 1.1;
+        }
+
+        .hero-content .highlight {
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #4b5563;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1e40af;
+            padding: 1rem 2rem;
+            border: 2px solid #1e40af;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #1e40af;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #1e40af;
+        }
+
+        .section-title p {
+            font-size: 1.25rem;
+            color: #4b5563;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Process Section with Image */
+        .process-section {
+            background: #ffffff;
+        }
+
+        .process-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .process-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Services Section */
+        .services-section {
+            background: #f8fafc;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .service-card p {
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        /* Use Cases Section */
+        .use-cases-section {
+            background: white;
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .use-case-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #f1f5f9;
+        }
+
+        .use-case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .use-case-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .use-case-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1e40af;
+        }
+
+        .use-case-card p {
+            color: #4b5563;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .use-case-details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .use-case-card:hover .use-case-details {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .use-case-details h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .use-case-details ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .use-case-details li {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .use-case-details li::before {
+            content: '✓';
+            color: #fbbf24;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .use-case-benefit {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        /* 80/20 Method Section with Image */
+        .method-section {
+            background: #f8fafc;
+        }
+
+        .method-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 3rem 0;
+        }
+
+        .method-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* About Section */
+        .about-section {
+            background: white;
+        }
+
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-container h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            color: #1e40af;
+        }
+
+        .about-container p {
+            font-size: 1.1rem;
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .btn-primary {
+            background: white;
+            color: #1e40af;
+            font-size: 1.1rem;
+            padding: 1.25rem 2.5rem;
+        }
+
+        .cta-section .btn-primary:hover {
+            background: #f8fafc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .services-grid,
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .process-image,
+            .method-image {
+                max-width: 95%;
+            }
+        }
+
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="steelcity-logo.png" alt="Steel City WebWorks">
+                SteelCity WebWorks
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#use-cases">Use Cases</a></li>
+                <li><a href="#method">Our Method</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <a href="#cta" class="cta-button">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>The <span class="highlight">#1 AI and Automation</span> Solution for Every Business</h1>
+                <p>We combine artificial intelligence with automation to create incredibly efficient processes that replace manual work for massive gains in productivity, quality, and customer experience.</p>
+                <div class="hero-buttons">
+                    <a href="#cta" class="btn-primary">Free Consultation</a>
+                    <a href="#method" class="btn-secondary">How It Works</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="steelcity-logo.png" alt="Steel City WebWorks - Pittsburgh Automation" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>10,000+</h3>
+                    <p>Hours of manual work automated</p>
+                </div>
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Businesses transformed</p>
+                </div>
+                <div class="stat-item">
+                    <h3>80%</h3>
+                    <p>Average time savings</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Automated operations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section with Image -->
+    <section class="process-section section">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>How Our AI and Automation Agency Works</h2>
+                <p>Transform your business operations with our proven 4-step automation methodology. We scope your unique workflow challenges, implement battle-tested frameworks, customize AI logic to match your business voice, and continuously monitor performance to ensure maximum efficiency and growth.</p>
+            </div>
+            <div class="process-image-container animate-on-scroll">
+                <img src="workflow-steps-final.png" alt="4-Step Automation Process" class="process-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section section">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>The Endless Use Cases of AI and Automation</h2>
+                <p>Our clients make their employees 10X more efficient by taking tedious, repetitive tasks off their plate. We are industry agnostic.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Sales and Marketing Automation</h3>
+                    <p>Content creation, full-funnel automation, lead routing, CRM, outbound, payments, contracts and much more.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Image, Voice, Text Recognition</h3>
+                    <p>Analyze and parse documents, biometrics, emotion, facial recognition, products, videos and more to automate actions.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Predictive Analytics</h3>
+                    <p>Data-driven decision making through risk analytics, demand or inventory forecasting and other future planning tasks.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Conversational AI</h3>
+                    <p>Prompt engineering, automatic replies and more for customer service, sales, chat bots, front-office and marketing.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Project Management</h3>
+                    <p>We connect all manual, repetitive steps in a process, from task handoff to completion. Onboarding, admin, accounting, invoicing.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Staff Augmentation</h3>
+                    <p>Save employees hours a day by automating their most tedious daily tasks. We've even replaced entire teams of virtual assistants.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="use-cases" class="use-cases-section section">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Popular Use Cases</h2>
+                <p>Real automation workflows that save businesses hours every day</p>
+            </div>
+            <div class="use-cases-grid">
+                <div class="use-case-card animate-on-scroll">
+                    <span class="use-case-icon">📋</span>
+                    <h3>Client Intake + Quote Flow</h3>
+                    <p>Auto-calculates quotes from form entries</p>
+                    <div class="use-case-details">
+                        <h4>How It Works:</h4>
+                        <ul>
+                            <li>Form submission triggers workflow</li>
+                            <li>AI extracts project details</li>
+                            <li>Auto-calculates pricing tiers</li>
+                            <li>Sends professional quote instantly</li>
+                        </ul>
+                        <div class="use-case-benefit">Saves 2-3 hours per quote</div>
+                    </div>
+                </div>
+                <div class="use-case-card animate-on-scroll">
+                    <span class="use-case-icon">📱</span>
+                    <h3>Missed Call → Textback</h3>
+                    <p>Instantly texts leads who don't answer</p>
+                    <div class="use-case-details">
+                        <h4>How It Works:</h4>
+                        <ul>
+                            <li>Missed call detected automatically</li>
+                            <li>Sends personalized follow-up text</li>
+                            <li>Schedules callback if needed</li>
+                            <li>Logs interaction in CRM</li>
+                        </ul>
+                        <div class="use-case-benefit">Never miss a lead again</div>
+                    </div>
+                </div>
+                <div class="use-case-card animate-on-scroll">
+                    <span class="use-case-icon">⭐</span>
+                    <h3>Review Request Automation</h3>
+                    <p>Sends timed Google review reminders</p>
+                    <div class="use-case-details">
+                        <h4>How It Works:</h4>
+                        <ul>
+                            <li>Triggers after project completion</li>
+                            <li>Waits optimal time for reviews</li>
+                            <li>Sends personalized request</li>
+                            <li>Follows up if no response</li>
+                        </ul>
+                        <div class="use-case-benefit">3X more reviews automatically</div>
+                    </div>
+                </div>
+                <div class="use-case-card animate-on-scroll">
+                    <span class="use-case-icon">💰</span>
+                    <h3>Invoice + Pay-Now Workflow</h3>
+                    <p>Sends invoice + payment link after job</p>
+                    <div class="use-case-details">
+                        <h4>How It Works:</h4>
+                        <ul>
+                            <li>Job completion triggers invoice</li>
+                            <li>Auto-generates with pay-now link</li>
+                            <li>Sends payment reminders</li>
+                            <li>Updates accounting system</li>
+                        </ul>
+                        <div class="use-case-benefit">Get paid 50% faster</div>
+                    </div>
+                </div>
+                <div class="use-case-card animate-on-scroll">
+                    <span class="use-case-icon">🎯</span>
+                    <h3>Lead Scoring + CRM Sync</h3>
+                    <p>Scores leads by behavior and syncs with systems</p>
+                    <div class="use-case-details">
+                        <h4>How It Works:</h4>
+                        <ul>
+                            <li>Tracks website and email behavior</li>
+                            <li>AI scores lead quality 1-10</li>
+                            <li>Auto-assigns to sales team</li>
+                            <li>Updates CRM with hot prospects</li>
+                        </ul>
+                        <div class="use-case-benefit">Focus on best leads only</div>
+                    </div>
+                </div>
+                <div class="use-case-card animate-on-scroll">
+                    <span class="use-case-icon">⚠️</span>
+                    <h3>Abandoned Form Rescue</h3>
+                    <p>Follows up automatically if forms aren't completed</p>
+                    <div class="use-case-details">
+                        <h4>How It Works:</h4>
+                        <ul>
+                            <li>Detects partially filled forms</li>
+                            <li>Sends gentle reminder emails</li>
+                            <li>Offers help completing form</li>
+                            <li>Recovers 40% of abandoned leads</li>
+                        </ul>
+                        <div class="use-case-benefit">Recover lost opportunities</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 80/20 Method Section with Image -->
+    <section id="method" class="method-section section">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>THE 80/20 METHOD</h2>
+                <p>We combine artificial intelligence with automation to eliminate manual tasks and create incredibly efficient processes.</p>
+            </div>
+            <div class="method-image-container animate-on-scroll">
+                <img src="method-80-20.png" alt="The 80/20 Method - AI + Human Framework" class="method-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section section">
+        <div class="section-container">
+            <div class="about-container">
+                <h2>About Me</h2>
+                <p>I'm Josh — a builder, consultant, and automation strategist based in Pittsburgh. I help businesses of all sizes stop doing repetitive work by turning processes into intelligent systems that scale.</p>
+                <p>With years of experience in AI and automation, I've helped hundreds of businesses reclaim their time and increase their profits through smart technology solutions that actually work.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta-section">
+        <div class="section-container">
+            <h2>Get your free $150 automation audit</h2>
+            <p>Find out how AI can save you time and money. Discover which processes in your business can be automated for maximum impact.</p>
+            <a href="#" class="btn-primary">Free Consultation</a>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
+
